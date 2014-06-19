@@ -10,17 +10,14 @@ setTimeout(function() {
 }, 10000);
 
 function formattedTime(date) {
-    var date = new Date(date);
-
-    var months = ["January", "February", "March", "April", "May", "June",
-        "July", "August", "September", "October", "November", "December"
-    ];
-
-    var timezoneOffset = date.getTimezoneOffset();
-    var month = months[date.getMonth()];
-    var day = date.getDate();
-    var hour = date.getHours();
-    var minute = date.getMinutes();
+    var d = new Date(date),
+        months = ["January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"
+        ],
+        month = months[d.getMonth()],
+        day = d.getDate(),
+        hour = d.getHours(),
+        minute = d.getMinutes();
 
     // pretty output (MM DD, HH:mm)
 
