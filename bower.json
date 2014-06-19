@@ -1,7 +1,4 @@
 {
   "name": "worldcup",
-  "version": "0.0.0",
-  "dependencies": {
-    "moment": "~2.7.0"
-  }
+  "version": "0.0.0"
 }
