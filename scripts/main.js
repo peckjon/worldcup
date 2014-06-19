@@ -37,64 +37,84 @@ function formattedTime(date) {
     }
 }
 
-$.getJSON(today, function(data) {
-
-    $.each(data, function(index) {
-        $(".matches_today")
-            .append("<ul>")
-            .append("<li>")
-            .append("Teams: " + data[index].home_team.country + " vs " + data[index].away_team.country)
-            .append("<br />Location: " + data[index].location)
-            .append("<br />Time: " + formattedTime(data[index].datetime));
-        if (data[index].status === "completed") {
-            $(".matches_today")
-                .append("<br />Winner: " + data[index].winner)
-                .append("<br />Score: " + data[index].home_team.country + " " + data[index].home_team.goals + " - " + data[index].away_team.goals + " " + data[index].away_team.country)
-                .append("</li>")
-                .append("</ul");
-        } else {
-            $(".matches_today")
-                .append("</li>")
-                .append("</ul");
-        }
-    });
-});
-
-$.getJSON(tomorrow, function(data) {
-    $.each(data, function(index) {
-        $(".matches_tomorrow")
-            .append("<ul>")
-            .append("<li>")
-            .append("Teams: " + data[index].home_team.country + " vs " + data[index].away_team.country)
-            .append("<br />Location: " + data[index].location)
-            .append("<br />Time: " + formattedTime(data[index].datetime))
-            .append("</li>")
-            .append("</ul");
-    });
-});
-
-$.getJSON(now, function(data) {
-    if (data.length > 0) {
+$.ajax({
+    url: today,
+    dataType: "json",
+    success: function(data) {
         $.each(data, function(index) {
-            $(".matches_now")
+            $(".matches_today")
                 .append("<ul>")
                 .append("<li>")
                 .append("Teams: " + data[index].home_team.country + " vs " + data[index].away_team.country)
-                .append("<br />Score: " + data[index].home_team.goals + " - " + data[index].away_team.goals)
                 .append("<br />Location: " + data[index].location)
-                .append("<br />Status: " + data[index].status);
+                .append("<br />Time: " + formattedTime(data[index].datetime));
             if (data[index].status === "completed") {
-                $(".matches_now")
+                $(".matches_today")
                     .append("<br />Winner: " + data[index].winner)
+                    .append("<br />Score: " + data[index].home_team.country + " " + data[index].home_team.goals + " - " + data[index].away_team.goals + " " + data[index].away_team.country)
                     .append("</li>")
                     .append("</ul");
             } else {
-                $(".matches_now")
+                $(".matches_today")
                     .append("</li>")
                     .append("</ul");
             }
         });
-    } else {
-        $(".matches_now").append("There aren't any games right now. Check back later.");
+    },
+    error: function() {
+        $(".matches_today").append("It appears that there's an error with the API. Please come back later.");
+    }
+});
+
+$.ajax({
+    url: tomorrow,
+    dataType: "json",
+    success: function(data) {
+        $.each(data, function(index) {
+            $(".matches_tomorrow")
+                .append("<ul>")
+                .append("<li>")
+                .append("Teams: " + data[index].home_team.country + " vs " + data[index].away_team.country)
+                .append("<br />Location: " + data[index].location)
+                .append("<br />Time: " + formattedTime(data[index].datetime))
+                .append("</li>")
+                .append("</ul");
+        });
+    },
+    error: function() {
+        $(".matches_tomorrow").append("It appears that there's an error with the API. Please come back later.");
+    }
+});
+
+$.ajax({
+    url: now,
+    dataType: "json",
+    success: function(data) {
+        if (data.length > 0) {
+            $.each(data, function(index) {
+                $(".matches_now")
+                    .append("<ul>")
+                    .append("<li>")
+                    .append("Teams: " + data[index].home_team.country + " vs " + data[index].away_team.country)
+                    .append("<br />Score: " + data[index].home_team.goals + " - " + data[index].away_team.goals)
+                    .append("<br />Location: " + data[index].location)
+                    .append("<br />Status: " + data[index].status);
+                if (data[index].status === "completed") {
+                    $(".matches_now")
+                        .append("<br />Winner: " + data[index].winner)
+                        .append("</li>")
+                        .append("</ul");
+                } else {
+                    $(".matches_now")
+                        .append("</li>")
+                        .append("</ul");
+                }
+            });
+        } else {
+            $(".matches_now").append("There aren't any games right now. Check back later.");
+        }
+    },
+    error: function() {
+        $(".matches_now").append("It appears that there's an error with the API. Please come back later.");
     }
 });
