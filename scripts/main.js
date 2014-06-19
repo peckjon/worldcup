@@ -9,6 +9,34 @@ setTimeout(function() {
     window.location.reload(1);
 }, 10000);
 
+function formattedTime(date) {
+    var date = new Date(date);
+
+    var months = ["January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+    ];
+
+    var timezoneOffset = date.getTimezoneOffset();
+    var month = months[date.getMonth()];
+    var day = date.getDate();
+    var hour = date.getHours();
+    var minute = date.getMinutes();
+
+    // pretty output (MM DD, HH:mm)
+
+    if (hour < 10 && minute < 10) {
+        return month + " " + day + ", " + 0 + hour + ":" + minute + 0;
+    }
+    // probably not needed but they're there in case they change the hours.
+    if (minute < 10) {
+        return month + " " + day + ", " + hour + ":" + minute + 0;
+    }
+
+    if (hour < 10) {
+        return month + " " + day + ", " + 0 + hour + ":" + minute;
+    }
+}
+
 $.getJSON(today, function(data) {
 
     $.each(data, function(index) {
@@ -17,7 +45,7 @@ $.getJSON(today, function(data) {
             .append("<li>")
             .append("Teams: " + data[index].home_team.country + " vs " + data[index].away_team.country)
             .append("<br />Location: " + data[index].location)
-            .append("<br />Time: " + new Date(data[index].datetime));
+            .append("<br />Time: " + formattedTime(data[index].datetime));
         if (data[index].status === "completed") {
             $(".matches_today")
                 .append("<br />Winner: " + data[index].winner)
@@ -39,7 +67,7 @@ $.getJSON(tomorrow, function(data) {
             .append("<li>")
             .append("Teams: " + data[index].home_team.country + " vs " + data[index].away_team.country)
             .append("<br />Location: " + data[index].location)
-            .append("<br />Time: " + new Date(data[index].datetime))
+            .append("<br />Time: " + formattedTime(data[index].datetime))
             .append("</li>")
             .append("</ul");
     });
