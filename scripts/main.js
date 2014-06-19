@@ -17,9 +17,18 @@ $.getJSON(today, function(data) {
             .append("<li>")
             .append("Teams: " + data[index].home_team.country + " vs " + data[index].away_team.country)
             .append("<br />Location: " + data[index].location)
-            .append("<br />Time: " + new Date(data[index].datetime))
-            .append("</li>")
-            .append("</ul");
+            .append("<br />Time: " + new Date(data[index].datetime));
+        if (data[index].status == "completed") {
+            $(".matches_today")
+                .append("<br />Winner: " + data[index].winner)
+                .append("<br />Score: " + data[index].home_team.country + " " + data[index].home_team.goals + " - " + data[index].away_team.goals + " " + data[index].away_team.country)
+                .append("</li>")
+                .append("</ul");
+        } else {
+            $(".matches_today")
+                .append("</li>")
+                .append("</ul");
+        }
     });
 });
 
