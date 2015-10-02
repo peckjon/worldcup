@@ -1,0 +1,19 @@
+body {
+  background: #fafafa;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #333;
+}
+
+li{
+	list-style-type: none;
+}
+
+.footie{
+	width: 1200px;
+	margin: 0 auto;
+}
+
+.today, .tomorrow, .current{
+	width: 400px;
+	float: left;
+}
