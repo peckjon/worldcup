@@ -1,27 +1,47 @@
 var gulp = require('gulp'),
-    sass = require('gulp-sass'),
-    livereload = require('gulp-livereload'),
-    http = require('http'),
-    st = require('st'),
-    minify = require('gulp-minify-css');
+        sass = require('gulp-sass'),
+        autoprefixer = require('gulp-autoprefixer'),
+        minifycss = require('gulp-minify-css'),
+        rename = require('gulp-rename');
 
-gulp.task('sass', function() {
-  gulp.src('src/*.scss')  
-    .pipe(minify({compatibility: 'ie8'}))
-    .pipe(sass({outputStyle: 'nested'}))
-    .pipe(gulp.dest('styles'))
-    .pipe(livereload());
+gulp.task('express', function() {
+	var express = require('express');
+	var app = express();
+  
+	app.use(require('connect-livereload')({port: 35729}));
+  	app.use(express.static(__dirname));
+  	app.listen(4000, '0.0.0.0');
 });
 
-gulp.task('watch', ['server'], function() {
-  livereload.listen();
-  gulp.watch('src/*.scss', ['sass']);
+var tinylr;
+gulp.task('livereload', function() {
+	tinylr = require('tiny-lr')();
+    tinylr.listen(35729);
 });
 
-gulp.task('server', function(done) {
-  http.createServer(
-    st({ path: __dirname, index: 'index.html', cache: false })
-  ).listen(8080, done);
+function notifyLiveReload(event) {
+	var fileName = require('path').relative(__dirname, event.path);
+
+  	tinylr.changed({body: {
+    		files: [fileName]
+    	}
+  	});
+}
+
+gulp.task('styles', function() {
+  	return sass('sass', { style: 'expanded' })
+    	.pipe(gulp.dest('css'))
+    	.pipe(rename({suffix: '.min'}))
+    	.pipe(minifycss())
+    	.pipe(gulp.dest('css'));
 });
 
-gulp.task('default', ['watch']);
+gulp.task('watch', function() {
+ 	gulp.watch('src/*.scss', ['styles']);
+  	gulp.watch('*.html', notifyLiveReload);
+  	gulp.watch('css/*.css', notifyLiveReload);
+});
+
+gulp.task('default', ['styles', 'express', 'livereload', 'watch'], function() {
+
+}); 
