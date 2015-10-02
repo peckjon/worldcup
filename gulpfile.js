@@ -8,7 +8,7 @@ var gulp = require('gulp'),
 gulp.task('sass', function() {
   gulp.src('src/*.scss')  
     .pipe(minify({compatibility: 'ie8'}))
-    .pipe(sass())
+    .pipe(sass({outputStyle: 'nested'}))
     .pipe(gulp.dest('styles'))
     .pipe(livereload());
 });
