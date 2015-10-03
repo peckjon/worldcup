@@ -2,7 +2,8 @@ var gulp 			= require('gulp'),
 	sass 			= require('gulp-sass'),
 	autoprefixer 	= require('gulp-autoprefixer'),
 	minifycss 		= require('gulp-minify-css'),
-	rename 			= require('gulp-rename');
+	rename 			= require('gulp-rename'),
+	jade			= require('gulp-jade');
 
 gulp.task('express', function() {
 	var express = require('express'),
@@ -29,7 +30,7 @@ function notifyLiveReload(event) {
 }
 
 gulp.task('styles', function() {
-	return gulp.src('src/*.scss')
+	return gulp.src('src/css/*.scss')
 		.pipe(sass({
 			precision: 10, 
 			onError: console.error.bind(console, 'Sass error:')
@@ -40,11 +41,20 @@ gulp.task('styles', function() {
 });
 
 gulp.task('watch', function() {
-	gulp.watch('src/**.scss', ['styles']);
+	gulp.watch('src/styles/**.scss', ['styles']);
+	gulp.watch('src/html/**.jade', ['jade']);
 	gulp.watch('**.html', notifyLiveReload);
 	gulp.watch('styles/**.css', notifyLiveReload);
 });
 
-gulp.task('default', ['styles', 'express', 'livereload', 'watch'], function() {
+gulp.task('jade', function(){
+	return gulp.src('src/html/*.jade')
+		.pipe(jade({
+			pretty: true
+		}))
+		.pipe(gulp.dest('.'))
+})
+
+gulp.task('default', ['styles', 'jade', 'express', 'livereload', 'watch'], function() {
 
 }); 
