@@ -1,7 +1,6 @@
 var express = require('express'),
-    app = module.exports.app = exports.app = express(),
+    app = express(),
     nunjucks = require('nunjucks');
-
 
 nunjucks.configure('templates', {
     autoescape: true,
