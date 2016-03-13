@@ -12,18 +12,20 @@ app.set('view engine', 'nunjucks');
 app.set('views', './templates');
 
 app.get('/', function (req, res) {
-    worldcup.getPrevMatches('today', function(todayMatches) {
-        res.render('index.html', {
-            todayMatches: todayMatches
-        });
+    var todayMatches = worldcup.getTodayMatches('today');
+    todayMatches.then(function (data) {
+      res.render('index.html', {
+          todayMatches: data
+      });
     });
 });
 
 app.get('/previous', function (req, res){
-    worldcup.getPrevMatches('prev', function(prevMatches) {
-        res.render('prev.html', {
-            prevMatches: prevMatches
-        });
+    var prevMatches = worldcup.getPrevMatches('prev');
+    prevMatches.then(function (data) {
+      res.render('prev.html', {
+          prevMatches: data
+      });
     });
 });
 

@@ -1,4 +1,4 @@
-var request = require('request');
+var rp = require('request-promise');
 
 function getMatches(arg, callback) {
     var obj = {
@@ -14,11 +14,7 @@ function getMatches(arg, callback) {
             break;
     }
 
-    request(obj, function(error, response, body){
-        if (response.statusCode === 200){
-            callback(body);
-        }
-    });
+    return rp(obj);
 }
 
 module.exports = {
