@@ -12,11 +12,19 @@ app.set('view engine', 'nunjucks');
 app.set('views', './templates');
 
 app.get('/', function (req, res) {
-    var todayMatches = worldcup.getTodayMatches();
+    worldcup.getPrevMatches('today', function(todayMatches) {
+        res.render('index.html', {
+            todayMatches: todayMatches
+        });
+    });
+});
 
-    res.render('index.html', {
-        todayMatches: todayMatches
-    })
+app.get('/previous', function (req, res){
+    worldcup.getPrevMatches('prev', function(prevMatches) {
+        res.render('prev.html', {
+            prevMatches: prevMatches
+        });
+    });
 });
 
 app.listen(3000, function(){

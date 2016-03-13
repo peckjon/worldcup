@@ -1,7 +1,12 @@
 {% extends "includes/base.html" %}
 
 {% block content %}
-    {% for match in todayMatches %}
-        {{ match }}
-    {% endfor %}
+    {% if todayMatches|length > 0 %}
+        {% for match in todayMatches %}
+            {{ match }}
+        {% endfor %}
+    {% else %}
+        <h4>No matches today</h4>
+        <a href="/previous">Previous matches</a>
+    {% endif %}
 {% endblock %}

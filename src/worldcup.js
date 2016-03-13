@@ -1,10 +1,27 @@
-var rp = require('request-promise');
+var request = require('request');
+
+function getMatches(arg, callback) {
+    var obj = {
+        json: true
+    };
+
+    switch (arg) {
+        case 'today':
+            obj.uri = 'http://worldcup.sfg.io/matches/today'
+            break;
+        case 'prev':
+            obj.uri = 'http://worldcup.sfg.io/matches'
+            break;
+    }
+
+    request(obj, function(error, response, body){
+        if (response.statusCode === 200){
+            callback(body);
+        }
+    });
+}
 
 module.exports = {
-    getTodayMatches: function(){
-        rp('http://worldcup.sfg.io/matches/today').then(this.process);
-    },
-    process: function(data){
-        return JSON.parse(data);
-    }
+    getPrevMatches: getMatches,
+    getTodayMatches: getMatches
 }
