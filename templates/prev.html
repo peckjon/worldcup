@@ -1,0 +1,9 @@
+{% extends 'includes/base.html' %}
+
+{% block content %}
+    {% if prevMatches|length > 0 %}
+        {% for match in prevMatches %}
+            {% include 'includes/match.html' %}
+        {% endfor %}
+    {% endif %}
+{% endblock %}

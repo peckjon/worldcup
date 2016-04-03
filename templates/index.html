@@ -1,0 +1,13 @@
+{% extends 'includes/base.html' %}
+
+{% block content %}
+    {% if todayMatches|length > 0 %}
+        {% for match in todayMatches %}
+            {{ match }}
+        {% endfor %}
+    {% else %}
+        <h4>No matches today</h4>
+        <a href='/previous'>Previous matches</a>
+        <a href='/tomorrow'>Tomorrow matches</a>
+    {% endif %}
+{% endblock %}

@@ -1,15 +1,24 @@
 {
   "name": "worldcup",
-  "version": "0.0.0",
-  "dependencies": {},
-  "devDependencies": {
-    "grunt-contrib-connect": "~0.5.0",
-    "grunt-contrib-jshint": "^0.10.0",
-    "grunt-contrib-watch": "~0.5.3",
-    "load-grunt-tasks": "~0.2.0",
-    "time-grunt": "~0.1.1"
+  "version": "1.0.1",
+  "description": "App for the world cup",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexraileanu/worldcup.git"
   },
-  "peerDependencies": {
-    "grunt": ">=0.4"
+  "author": "Alex Raileanu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexraileanu/worldcup/issues"
+  },
+  "homepage": "https://github.com/alexraileanu/worldcup#readme",
+  "dependencies": {
+    "express": "^4.13.4",
+    "gulp": "^3.9.1",
+    "gulp-nodemon": "^2.0.6",
+    "moment": "^2.12.0",
+    "nunjucks": "^2.4.0",
+    "request-promise": "^2.0.1"
   }
 }
