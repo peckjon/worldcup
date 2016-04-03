@@ -6,6 +6,7 @@
             {% include 'includes/match.html' %}
         {% endfor %}
     {% else %}
-        <h1>No matches are played tomorrow</h1>
+        <h4>No matches today</h4>
+        <a href='/previous'>Previous matches</a>
     {% endif %}
 {% endblock %}
