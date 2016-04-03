@@ -12,6 +12,9 @@ function getMatches(arg, callback) {
         case 'prev':
             obj.uri = 'http://worldcup.sfg.io/matches'
             break;
+        case 'tomorrow':
+            obj.uri = 'http://worldcup.sfg.io/matches/tomorrow'
+            break;
     }
 
     return rp(obj);
@@ -19,5 +22,6 @@ function getMatches(arg, callback) {
 
 module.exports = {
     getPrevMatches: getMatches,
-    getTodayMatches: getMatches
+    getTodayMatches: getMatches,
+    getTomorrowMatches: getMatches
 }

@@ -1,4 +1,4 @@
-{% extends "includes/base.html" %}
+{% extends 'includes/base.html' %}
 
 {% block content %}
     {% if todayMatches|length > 0 %}
@@ -7,6 +7,7 @@
         {% endfor %}
     {% else %}
         <h4>No matches today</h4>
-        <a href="/previous">Previous matches</a>
+        <a href='/previous'>Previous matches</a>
+        <a href='/tomorrow'>Tomorrow matches</a>
     {% endif %}
 {% endblock %}

@@ -1,15 +1,20 @@
-var express = require('express'),
-    app = express(),
-    nunjucks = require('nunjucks'),
-    worldcup = require('./src/worldcup.js');
+var express     = require('express'),
+    app         = express(),
+    nunjucks    = require('nunjucks'),
+    worldcup    = require('./src/worldcup.js'),
+    moment      = require('moment');
 
-nunjucks.configure('templates', {
+var env = nunjucks.configure('templates', {
     autoescape: true,
     express: app
 });
 
 app.set('view engine', 'nunjucks');
 app.set('views', './templates');
+
+env.addFilter('date', function(str, format){
+    return moment(str).format(format);
+});
 
 app.get('/', function (req, res) {
     var todayMatches = worldcup.getTodayMatches('today');
@@ -29,6 +34,11 @@ app.get('/previous', function (req, res){
     });
 });
 
-app.listen(3000, function(){
-    console.log('Server running');
+app.get('/tomorrow', function(req, res){
+    var tomorrowMatches = worldcup.getTomorrowMatches('tomorrow');
+    tomorrowMatches.then(function (data){
+        res.render('tomorrow.html', {
+            tomorrowMatches: data
+        })
+    });
 });
