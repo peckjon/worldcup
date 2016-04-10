@@ -1,8 +1,8 @@
 var express     = require('express'),
     app         = express(),
     nunjucks    = require('nunjucks'),
-    worldcup    = require('./src/worldcup'),
     moment      = require('moment'),
+    worldcup    = require('./src/worldcup'),
     routes      = require('./src/routes')(app);
 
 var env = nunjucks.configure('templates', {

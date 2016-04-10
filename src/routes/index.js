@@ -10,4 +10,7 @@ module.exports = function(app){
 
     app.get('/tomorrow', matches.tomorrow);
 
+    app.all('/team/:name/:op?', teams.load);
+    app.get('/team/:name', teams.view);
+
 }

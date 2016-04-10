@@ -6,7 +6,7 @@
                 <li>Date: {{ match.datetime|date('Do of MMMM, YYYY - h:mm a') }}</li>
                 <li>Location: {{ match.location }}</li>
                 {% if match.status == 'completed' %}
-                    <li>Result: {{ match.home_team.code }} {{ match.home_team.goals }} - {{ match.away_team.goals }} {{ match.away_team.code }}</li>
+                    <li>Result: <a href='/team/{{ match.home_team.code }}'>{{ match.home_team.code }}</a> {{ match.home_team.goals }} - {{ match.away_team.goals }} <a href='/team/{{ match.away_team.code }}'>{{ match.away_team.code }}</a></li>
                 {% endif %}
             </ul>
         </div>
