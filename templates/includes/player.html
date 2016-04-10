@@ -1,0 +1,9 @@
+<div class="players">
+    <div class="player">
+        <ul>
+            <li>Name: {{ player.player_name }} {% if player.captain %}(c){% endif %}</li>
+            <li>Number: {{ player.number }}</li>
+            <li>Position: {{ player.position_key }}({{ player.position_name }})</li>
+        </ul>
+    </div>
+</div>
