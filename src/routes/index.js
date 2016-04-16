@@ -1,6 +1,7 @@
 var site = require('./site.js'),
     matches = require('./matches.js'),
-    teams = require('./teams.js');
+    teams = require('./teams.js'),
+    clubs = require('./clubs.js');
 
 module.exports = function(app){
 
@@ -10,7 +11,10 @@ module.exports = function(app){
 
     app.get('/tomorrow', matches.tomorrow);
 
-    app.all('/team/:name/:op?', teams.load);
+    app.get('/team/list', teams.list);
     app.get('/team/:name', teams.view);
+
+    app.get('/club/list', clubs.list);
+    app.get('/club/view/:id', clubs.view);
 
 }
