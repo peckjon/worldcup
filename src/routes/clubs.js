@@ -1,6 +1,6 @@
 var db = require('../database');
 
-exports.view = function (req, res) {
+exports.view = function(req, res){
     db.select('SELECT \
             player.fifa_display_name AS fifa_display_name, \
             player.first_name        AS first_name, \
@@ -12,23 +12,23 @@ exports.view = function (req, res) {
             club.name                AS club_name, \
             country.title            AS club_country \
             FROM player, position, club, country \
-            WHERE player.country_id = (SELECT id FROM country WHERE code = $code) \
+            WHERE player.club_id = $club \
                   AND player.position_id = position.id \
                   AND player.club_id = club.id \
                   AND club.country_id = country.id \
             ORDER BY position_id;', {
-        $code: req.params.name
+        $club: req.params.id
     }).then(function(data){
-        res.render('team.html', {
-            team: data
+        res.render('club.html', {
+            club: data
         });
     });
-};
+}
 
 exports.list = function(req, res){
-    db.select('SELECT code, title FROM country WHERE country.id IN (SELECT country_id FROM player)').then(function(data){
-        res.render('teams.html', {
-            teams: data
+    db.select('SELECT club.id, name, country.title as country FROM club, country WHERE country_id = country.id ORDER BY country').then(function(data){
+        res.render('clubs.html', {
+            clubs: data
         })
     });
 }

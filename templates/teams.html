@@ -1,0 +1,13 @@
+{% extends 'includes/base.html' %}
+
+{% block content %}
+    {% if teams|length > 0 %}
+        <ul>
+            {% for team in teams %}
+                <li><a href="/team/{{ team.code }}">{{ team.title }}</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <h4>This shouldn't happen.</h4>
+    {% endif %}
+{% endblock %}

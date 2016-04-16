@@ -1,0 +1,13 @@
+{% extends 'includes/base.html' %}
+
+{% block content %}
+    {% if clubs|length > 0 %}
+        <ul>
+            {% for club in clubs %}
+                <li><a href="/club/view/{{ club.id }}">{{ club.name }} ({{ club.country }})</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <h4>This shouldn't happen.</h4>
+    {% endif %}
+{% endblock %}

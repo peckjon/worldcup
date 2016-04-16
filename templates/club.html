@@ -1,11 +1,11 @@
 {% extends 'includes/base.html' %}
 
 {% block content %}
-    {% if team|length > 0 %}
-        {% for player in team %}
+    {% if club|length > 0 %}
+        {% for player in club %}
             {% include 'includes/player.html' %}
         {% endfor %}
     {% else %}
-        <h4>No info available for this god damned team</h4>
+        <h4>No info available for this club</h4>
     {% endif %}
 {% endblock %}
