@@ -19,7 +19,7 @@ exports.view = function (req, res) {
             ORDER BY position_id;', {
         $code: req.params.name
     }).then(function(data){
-        res.render('team.html', {
+        res.render('teams/view.html', {
             team: data
         });
     });
@@ -27,7 +27,7 @@ exports.view = function (req, res) {
 
 exports.list = function(req, res){
     db.select('SELECT code, title FROM country WHERE country.id IN (SELECT country_id FROM player)').then(function(data){
-        res.render('teams.html', {
+        res.render('teams/list.html', {
             teams: data
         })
     });

@@ -1,11 +1,9 @@
 {% extends 'includes/base.html' %}
 
 {% block content %}
-    {% if tomorrowMatches|length > 0 %}
-        {% for match in tomorrowMatches %}
+    {% if pastMatches|length > 0 %}
+        {% for match in pastMatches %}
             {% include 'includes/match.html' %}
         {% endfor %}
-    {% else %}
-        <h1>No matches are played tomorrow</h1>
     {% endif %}
 {% endblock %}

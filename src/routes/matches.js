@@ -1,19 +1,19 @@
 var worldcup = require('../worldcup');
 
-exports.previous = function (req, res) {
-    var prevMatches = worldcup.getPrevMatches('prev');
-    prevMatches.then(function (data) {
-      res.render('prev.html', {
-          prevMatches: data
+exports.past = function (req, res) {
+    var pastMatches = worldcup.getMatches('past');
+    pastMatches.then(function (data) {
+      res.render('matches/past.html', {
+          pastMatches: data
       });
     });
 }
 
-exports.tomorrow = function (req, res) {
-    var tomorrowMatches = worldcup.getTomorrowMatches('tomorrow');
-    tomorrowMatches.then(function (data){
-        res.render('tomorrow.html', {
-            tomorrowMatches: data
+exports.future = function (req, res) {
+    var futureMatches = worldcup.getMatches('future');
+    futureMatches.then(function (data){
+        res.render('matches/future.html', {
+            futureMatches: data
         })
     });
 }

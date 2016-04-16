@@ -19,7 +19,7 @@ exports.view = function(req, res){
             ORDER BY position_id;', {
         $club: req.params.id
     }).then(function(data){
-        res.render('club.html', {
+        res.render('clubs/view.html', {
             club: data
         });
     });
@@ -27,7 +27,7 @@ exports.view = function(req, res){
 
 exports.list = function(req, res){
     db.select('SELECT club.id, name, country.title as country FROM club, country WHERE country_id = country.id ORDER BY country').then(function(data){
-        res.render('clubs.html', {
+        res.render('clubs/list.html', {
             clubs: data
         })
     });
