@@ -1,0 +1,11 @@
+{% extends '../includes/base.nj' %}
+
+{% block content %}
+    {% if team %}
+        {% for player in team.players %}
+            {% include 'includes/player.nj' %}
+        {% endfor %}
+    {% else %}
+        <h4>No info available for this god damned team</h4>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends 'includes/base.nj' %}
+
+{% block content %}
+    {% if pastMatches|length > 0 %}
+        {% for match in pastMatches %}
+            {% include 'includes/match.nj' %}
+        {% endfor %}
+    {% endif %}
+{% endblock %}
