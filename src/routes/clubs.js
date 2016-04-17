@@ -19,7 +19,10 @@ exports.view = function (req, res) {
         }],
         where: {
             id: req.params.id,
-        }
+        },
+        order: [
+            [models.player, models.position, 'id', 'ASC']
+        ]
     }).then(function (data) {
         res.render('clubs/view.nj', {
             club: data,
