@@ -1,7 +1,7 @@
-var models = require('../models'),
+var models    = require('../models'),
     Sequelize = require('sequelize');
 
-exports.view = function(req, res){
+exports.view = function (req, res) {
     models.club.findOne({
         include: [{
             model: models.player,
@@ -20,14 +20,14 @@ exports.view = function(req, res){
         where: {
             id: req.params.id,
         }
-    }).then(function(data){
+    }).then(function (data) {
         res.render('clubs/view.nj', {
             club: data,
         })
     });
 }
 
-exports.list = function(req, res){
+exports.list = function (req, res) {
     models.club.findAll({
         include: [{
             model: models.country,
@@ -35,7 +35,7 @@ exports.list = function(req, res){
                 state: Sequelize.col('country.id')
             }
         }]
-    }).then(function(data){
+    }).then(function (data) {
         res.render('clubs/list.nj', {
             clubs: data
         });

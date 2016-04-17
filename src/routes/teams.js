@@ -1,4 +1,4 @@
-var models = require('../models'),
+var models    = require('../models'),
     Sequelize = require('sequelize');
 
 exports.view = function (req, res) {
@@ -20,15 +20,15 @@ exports.view = function (req, res) {
         where: {
             code: req.params.name,
         }
-    }).then(function(data){
+    }).then(function (data) {
         res.render('teams/view.nj', {
             team: data,
         })
     });
 };
 
-exports.list = function(req, res){
-    models.country.findAll().then(function(data){
+exports.list = function (req, res) {
+    models.country.findAll().then(function (data) {
         res.render('teams/list.nj', {
             teams: data
         });

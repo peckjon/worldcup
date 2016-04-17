@@ -1,11 +1,11 @@
-module.exports = function(sequelize, Sequelize) {
+module.exports = function (sequelize, Sequelize) {
     var club = sequelize.define('club', {
         name: {
             type: Sequelize.STRING
         }
     }, {
         classMethods: {
-            associate: function(models){
+            associate: function (models) {
                 club.belongsTo(models.country, {
                     foreignKey: 'countryId'
                 });

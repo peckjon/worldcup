@@ -1,10 +1,10 @@
 var worldcup = require('../worldcup');
 
-exports.index = function(req, res){
+exports.index = function (req, res) {
     var todayMatches = worldcup.getMatches('present');
     todayMatches.then(function (data) {
-      res.render('index.nj', {
-          todayMatches: data
-      });
+        res.render('index.nj', {
+            todayMatches: data
+        });
     });
 };

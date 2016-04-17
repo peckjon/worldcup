@@ -1,4 +1,4 @@
-module.exports = function(sequelize, Sequelize) {
+module.exports = function (sequelize, Sequelize) {
     var country = sequelize.define('country', {
         code: {
             type: Sequelize.STRING,
@@ -11,7 +11,7 @@ module.exports = function(sequelize, Sequelize) {
     }, {
         timestamps: false,
         classMethods: {
-            associate: function(models){
+            associate: function (models) {
                 country.hasMany(models.player, {
                     foreignKey: 'id',
                 });

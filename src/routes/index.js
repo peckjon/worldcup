@@ -1,9 +1,9 @@
-var site = require('./site.js'),
+var site    = require('./site.js'),
     matches = require('./matches.js'),
-    teams = require('./teams.js'),
-    clubs = require('./clubs.js');
+    teams   = require('./teams.js'),
+    clubs   = require('./clubs.js');
 
-module.exports = function(app){
+module.exports = function (app) {
 
     app.get('/', site.index);
 

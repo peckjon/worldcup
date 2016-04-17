@@ -1,4 +1,4 @@
-module.exports = function(sequelize, Sequelize) {
+module.exports = function (sequelize, Sequelize) {
     var player = sequelize.define('player', {
         fifaDisplayName: {
             type: Sequelize.STRING,
@@ -23,7 +23,7 @@ module.exports = function(sequelize, Sequelize) {
         }
     }, {
         classMethods: {
-            associate: function(models){
+            associate: function (models) {
                 player.belongsTo(models.country, {
                     foreignKey: 'countryId',
                 });
