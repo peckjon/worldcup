@@ -13,7 +13,7 @@ module.exports = function (sequelize, Sequelize) {
         classMethods: {
             associate: function (models) {
                 country.hasMany(models.player, {
-                    foreignKey: 'id',
+                    foreignKey: 'countryId',
                 });
             }
         },

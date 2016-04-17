@@ -6,7 +6,7 @@ exports.view = function (req, res) {
         include: [{
             model: models.player,
             where: {
-                state: Sequelize.col('club.id')
+                countryId: Sequelize.col('club.id')
             },
             include: [{
                 model: models.position
@@ -14,7 +14,7 @@ exports.view = function (req, res) {
         }, {
             model: models.country,
             where: {
-                state: Sequelize.col('country.id')
+                countryId: Sequelize.col('country.id')
             }
         }],
         where: {
@@ -32,9 +32,12 @@ exports.list = function (req, res) {
         include: [{
             model: models.country,
             where: {
-                state: Sequelize.col('country.id')
+                id: Sequelize.col('country.id')
             }
-        }]
+        }],
+        order: [
+            [models.country, 'name', 'ASC']
+        ]
     }).then(function (data) {
         res.render('clubs/list.nj', {
             clubs: data

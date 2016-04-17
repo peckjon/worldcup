@@ -6,7 +6,7 @@ exports.view = function (req, res) {
         include: [{
             model: models.player,
             where: {
-                state: Sequelize.col('country.id')
+                countryId: Sequelize.col('country.id')
             },
             include: [{
                 model: models.position
@@ -19,7 +19,10 @@ exports.view = function (req, res) {
         }],
         where: {
             code: req.params.name,
-        }
+        },
+        order: [
+            [models.player, models.position, 'id', 'ASC']
+        ]
     }).then(function (data) {
         res.render('teams/view.nj', {
             team: data,
@@ -28,7 +31,19 @@ exports.view = function (req, res) {
 };
 
 exports.list = function (req, res) {
-    models.country.findAll().then(function (data) {
+    models.country.findAll({
+        include: [{
+            model: models.player,
+            where: {
+                countryId: {
+                    $not: null
+                }
+            }
+        }],
+        order: [
+            ['name', 'ASC']
+        ]
+    }).then(function (data) {
         res.render('teams/list.nj', {
             teams: data
         });
