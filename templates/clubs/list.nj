@@ -1,10 +1,10 @@
-{% extends 'includes/base.html' %}
+{% extends '../includes/base.nj' %}
 
 {% block content %}
     {% if clubs|length > 0 %}
         <ul>
             {% for club in clubs %}
-                <li><a href="/club/view/{{ club.id }}">{{ club.name }} ({{ club.country }})</a></li>
+                <li><a href="/club/view/{{ club.id }}">{{ club.name }} ({{ club.country.name }})</a></li>
             {% endfor %}
         </ul>
     {% else %}

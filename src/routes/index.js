@@ -7,9 +7,9 @@ module.exports = function(app){
 
     app.get('/', site.index);
 
-    app.get('/previous', matches.previous);
+    app.get('/previous', matches.past);
 
-    app.get('/tomorrow', matches.tomorrow);
+    app.get('/tomorrow', matches.future);
 
     app.get('/team/list', teams.list);
     app.get('/team/:name', teams.view);
