@@ -1,10 +1,8 @@
 var fs        = require('fs'),
     path      = require('path'),
     Sequelize = require('sequelize'),
-    sequelize = new Sequelize(null, null, null, {
-        'dialect': 'sqlite',
-        'storage': __dirname + '/../../data/worldcup_orm.db',
-    }),
+    config    = require(path.join(__dirname, '../..', 'config', 'config.json'));
+    sequelize = new Sequelize(null, null, null, config),
     db        = {};
 
 fs.readdirSync(__dirname)

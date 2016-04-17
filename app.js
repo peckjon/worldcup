@@ -18,6 +18,4 @@ env.addFilter('date', function(str, format){
     return moment(str).format(format);
 });
 
-models.sequelize.sync().then(function(){
-    app.listen(3000);
-});
+app.listen(3000);
