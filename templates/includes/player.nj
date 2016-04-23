@@ -1,14 +1,17 @@
-<div class="players">
-    <div class="player">
-        <ul>
-            <li>Name: {{ player.fifaDisplayName }}</li>
-            <li>Number: {{ player.number }}</li>
-            <li>Position: {{ player.position.key }} ({{ player.position.name }})</li>
-            {% if club %}
-                <li>Club: {{ club.name }} ({{ club.country.name }})</li>
-            {% elif player.club %}
-                <li>Club: {{ player.club.name }} ({{ player.club.country.name }})</li>
-            {% endif %}
-        </ul>
-    </div>
+<div class="panel-heading">
+    <h3 class="panel-title">
+        {{ player.fifaDisplayName }}
+    </h3>
+</div>
+
+<div class="panel-body">
+    <ul>
+        <li>Number: {{ player.number }}</li>
+        <li>Position: {{ player.position.key }} ({{ player.position.name }})</li>
+        {% if club %}
+            <li>Club: {{ club.name }} ({{ club.country.name }})</li>
+        {% elif player.club %}
+            <li>Club: {{ player.club.name }} ({{ player.club.country.name }})</li>
+        {% endif %}
+    </ul>
 </div>
