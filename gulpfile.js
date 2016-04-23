@@ -2,14 +2,15 @@ var gulp    = require('gulp'),
     nodemon = require('gulp-nodemon'),
     sass    = require('gulp-ruby-sass'),
     notify  = require('gulp-notify'),
+    browserSync = require('browser-sync').create(),
     paths   = {
         publicUi: './ui/public',
         sourcesUi: './ui/sources/sass',
         includes: './node_modules'
-    }
+    };
 
 gulp.task('default', ['watch'], function(){
-    gulp.start('nodemon', 'css', 'icons');
+    gulp.start('nodemon', 'css', 'icons', 'browser-sync');
 });
 
 gulp.task('css', function(){
@@ -36,6 +37,13 @@ gulp.task('nodemon', function(){
 gulp.task('icons', function(){
     return gulp.src(paths.includes + '/font-awesome/fonts/**.*')
             .pipe(gulp.dest(paths.publicUi + '/fonts'));
+});
+
+gulp.task('browser-sync', function() {
+    browserSync.init(null, {
+        proxy: "http://localhost.dev.worldcup.com",
+        port: 5000
+    });
 });
 
 gulp.task('watch', function(){

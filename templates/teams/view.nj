@@ -3,7 +3,7 @@
 {% block content %}
     {% if team %}
         {% for player in team.players %}
-        <div class="col-md-4">
+        <div class="col-md-4 col-xs-12">
             <div class="panel panel-default">
                 {% include 'includes/player.nj' %}
             </div>
