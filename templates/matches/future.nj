@@ -1,11 +1,13 @@
 {% extends 'includes/base.nj' %}
 
 {% block content %}
-    {% if futureMatches|length > 0 %}
-        {% for match in futureMatches %}
-            {% include 'includes/match.nj' %}
-        {% endfor %}
-    {% else %}
-        <h1>No matches are played tomorrow</h1>
-    {% endif %}
+    <div class="col-md-12">
+        {% if futureMatches|length > 0 %}
+            {% for match in futureMatches %}
+                {% include 'includes/match.nj' %}
+            {% endfor %}
+        {% else %}
+            <h1>No matches are played tomorrow</h1>
+        {% endif %}
+    </div>
 {% endblock %}

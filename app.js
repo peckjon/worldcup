@@ -13,6 +13,8 @@ var env = nunjucks.configure('templates', {
 app.set('view engine', 'nj');
 app.set('views', './templates');
 
+app.use(express.static('ui/public'));
+
 env.addFilter('date', function (str, format) {
     return moment(str).format(format);
 });
