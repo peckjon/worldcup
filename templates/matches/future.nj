@@ -1,5 +1,10 @@
 {% extends 'includes/base.nj' %}
 
+{% block nav %}
+    {% set active = 'matches' %}
+    {% include "includes/navbar.nj" %}
+{% endblock %}
+
 {% block content %}
     <div class="col-md-12">
         {% if futureMatches|length > 0 %}

@@ -1,5 +1,10 @@
 {% extends '../includes/base.nj' %}
 
+{% block nav %}
+    {% set active = 'info' %}
+    {% include "includes/navbar.nj" %}
+{% endblock %}
+
 {% block content %}
     {% if team %}
         {% for player in team.players %}

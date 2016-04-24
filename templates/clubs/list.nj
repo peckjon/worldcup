@@ -1,5 +1,10 @@
 {% extends '../includes/base.nj' %}
 
+{% block nav %}
+    {% set active = 'info' %}
+    {% include "includes/navbar.nj" %}
+{% endblock %}
+
 {% block content %}
     <div class="col-md-12">
         {% if clubs|length > 0 %}

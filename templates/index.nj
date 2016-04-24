@@ -1,5 +1,10 @@
 {% extends 'includes/base.nj' %}
 
+{% block nav %}
+    {% set active = 'index' %}
+    {% include "includes/navbar.nj" %}
+{% endblock %}
+
 {% block content %}
     <div class="col-md-12">
         {% if todayMatches|length > 0 %}
@@ -9,9 +14,5 @@
         {% else %}
             <h4>No matches today</h4>
         {% endif %}
-        <a href='/previous'>Previous matches</a>
-        <a href='/tomorrow'>Tomorrow matches</a>
-        <a href="/team/list">List of teams</a>
-        <a href="/club/list">List of clubs</a>
     </div>
 {% endblock %}
