@@ -5,10 +5,10 @@ var worldcup = require('../worldcup'),
 exports.past = function (req, res) {
     var pastMatches = worldcup.getMatches('past');
     pastMatches.then(function (data) {
-        var page = parseInt(req.query.page),
+        var page = req.query.page,
             url  = req.url;
 
-        if (page == null) {
+        if (page === undefined) {
             page = 1;
         }
 
