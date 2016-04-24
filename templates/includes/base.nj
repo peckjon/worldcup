@@ -1,18 +1,28 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html class="no-js" lang="">
     <head>
-        <link rel="stylesheet" href="/css/site.css">
-        <meta charset='utf-8'>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title>Euro 2016</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="/css/flatly.css">
+        <link rel="stylesheet" href="/css/site.css">
     </head>
     <body>
-        <div class="container">
-            {# <div class="row"> #}
-                {% block content %}
+        {% block nav %}
+            {% include "includes/navbar.nj" %}
+        {% endblock %}
 
-                {% endblock %}
-            {# </div> #}
+        <div class="container">
+
+            {% block content %}
+
+            {% endblock %}
         </div>
+
+        <script src="/js/vendor/jquery.min.js"></script>
+        <script src="/js/vendor/bootstrap.min.js"></script>
     </body>
 </html>

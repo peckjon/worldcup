@@ -1,5 +1,10 @@
 {% extends 'includes/base.nj' %}
 
+{% block nav %}
+    {% set active = 'matches' %}
+    {% include "includes/navbar.nj" %}
+{% endblock %}
+
 {% block content %}
     {% if pastMatches|length > 0 %}
         {% for match in pastMatches %}
