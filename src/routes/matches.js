@@ -17,8 +17,8 @@ exports.past = function (req, res) {
             firstPage   : req.path,
             page        : page,
             pages       : Math.floor(data.length / limit),
-            previousPage: url.replace(/\d/, page - 1),
-            nextPage    : url.replace(/\d/, page + 1),
+            previousPage: url.replace(/\d/, parseInt(page) - 1),
+            nextPage    : url.replace(/\d/, parseInt(page) + 1),
             goToPage    : url.replace(/\d/, '')
         });
     });
