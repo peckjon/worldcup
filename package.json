@@ -14,7 +14,6 @@
   },
   "homepage": "https://github.com/alexraileanu/worldcup#readme",
   "dependencies": {
-    "bootstrap": "^3.3.6",
     "express": "^4.13.4",
     "gulp": "^3.9.1",
     "gulp-nodemon": "^2.0.6",
