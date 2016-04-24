@@ -15,6 +15,7 @@
   "homepage": "https://github.com/alexraileanu/worldcup#readme",
   "dependencies": {
     "express": "^4.13.4",
+    "express-paginate": "^0.2.0",
     "gulp": "^3.9.1",
     "gulp-nodemon": "^2.0.6",
     "jquery": "^2.2.3",

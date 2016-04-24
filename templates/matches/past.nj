@@ -7,12 +7,28 @@
 
 {% block content %}
     {% if pastMatches|length > 0 %}
-        {% for match in pastMatches %}
-            <div class="col-md-4 col-xs-12">
-                <div class="panel panel-default">
-                    {% include 'includes/match.nj' %}
+        <div class="row">
+            {% for match in pastMatches %}
+                <div class="col-md-4 col-xs-12">
+                    <div class="panel panel-default">
+                        {% include 'includes/match.nj' %}
+                    </div>
                 </div>
+            {% endfor %}
+        </div>
+
+        <div class="row">
+            {% include '../includes/pagination.nj' %}
+        </div>
+    {% endif %}
+
+    {% if pastMatches == -1 %}
+        <div class="col-md-12">
+            <div class="alert alert-danger" role="alert">
+                Requested page doesn't exist.
+
+                <a href="{{ firstPage }}" class="alert-link">Go to first page</a>
             </div>
-        {% endfor %}
+        </div>
     {% endif %}
 {% endblock %}
