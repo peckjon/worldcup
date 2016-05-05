@@ -1,8 +1,8 @@
-{% extends 'includes/base.nj' %}
+{% extends 'includes/base.html' %}
 
 {% block nav %}
     {% set active = 'matches' %}
-    {% include "includes/navbar.nj" %}
+    {% include "includes/navbar.html" %}
 {% endblock %}
 
 {% block content %}
@@ -10,7 +10,7 @@
         {% for match in pastMatches %}
             <div class="col-md-4 col-xs-12">
                 <div class="panel panel-default">
-                    {% include 'includes/match.nj' %}
+                    {% include 'includes/match.html' %}
                 </div>
             </div>
         {% endfor %}

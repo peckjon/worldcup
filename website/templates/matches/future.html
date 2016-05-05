@@ -1,15 +1,15 @@
-{% extends 'includes/base.nj' %}
+{% extends 'includes/base.html' %}
 
 {% block nav %}
     {% set active = 'matches' %}
-    {% include "includes/navbar.nj" %}
+    {% include "includes/navbar.html" %}
 {% endblock %}
 
 {% block content %}
     <div class="col-md-12 col-xs-12">
         {% if futureMatches|length > 0 %}
             {% for match in futureMatches %}
-                {% include 'includes/match.nj' %}
+                {% include 'includes/match.html' %}
             {% endfor %}
         {% else %}
             <h1>No matches are played tomorrow</h1>

@@ -1,11 +1,11 @@
-{% extends '../includes/base.nj' %}
+{% extends '../includes/base.html' %}
 
 {% block content %}
     {% if club %}
         {% for player in club.players %}
             <div class="col-md-4 col-xs-12">
                 <div class="panel panel-default">
-                    {% include 'includes/player.nj' %}
+                    {% include 'includes/player.html' %}
                 </div>
             </div>
         {% endfor %}
