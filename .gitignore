@@ -3,4 +3,6 @@ node_modules
 data/
 .idea/
 .sass-cache/
+lib/
 venv/
+*.pyc
