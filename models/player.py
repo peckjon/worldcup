@@ -15,6 +15,6 @@ class Player(db.Model):
     club_id = db.Column(db.Integer, db.ForeignKey('club.id'))
     position_id = db.Column(db.Integer, db.ForeignKey('position.id'))
 
-    country = db.relationship('Country')
+    country = db.relationship('Country', backref='players')
     club = db.relationship('Club', backref='players', lazy='joined')
     position = db.relationship('Position', lazy='joined', order_by=position_id)
