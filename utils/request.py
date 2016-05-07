@@ -1,5 +1,4 @@
 import requests
-import json
 
 def make_request(arg):
     url = ''
