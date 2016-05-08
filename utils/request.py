@@ -1,4 +1,4 @@
-import requests
+from caching import cache
 
 
 def make_request(arg):
@@ -10,4 +10,4 @@ def make_request(arg):
     elif arg == 'future':
         url = 'http://worldcup.sfg.io/matches/tomorrow'
 
-    return requests.get(url, params={'json': True}).json()
+    return cache(arg, url)

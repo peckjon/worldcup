@@ -6,15 +6,13 @@
 {% endblock %}
 
 {% block content %}
-    {% if team %}
-        {% for player in team.players %}
+    {% for player in team.players if team.players|length > 0 %}
         <div class="col-md-4 col-xs-12">
             <div class="panel panel-default">
                 {% include 'includes/player.html' %}
             </div>
         </div>
-        {% endfor %}
     {% else %}
         <h4>No info available for this god damned team</h4>
-    {% endif %}
+    {% endfor %}
 {% endblock %}
