@@ -4,9 +4,7 @@ from flask.ext.redis import FlaskRedis
 
 app = Flask(__name__, static_folder='static/public')
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///../data/db.worldcup.sqlite'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
-app.config['REDIS_URL'] = 'redis://localhost:6379/0'
+app.config.from_pyfile('../config/config.cfg')
 
 db = SQLAlchemy(app)
 redis = FlaskRedis(app)
