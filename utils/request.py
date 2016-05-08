@@ -1,5 +1,6 @@
 import requests
 
+
 def make_request(arg):
     url = ''
     if arg == 'today':

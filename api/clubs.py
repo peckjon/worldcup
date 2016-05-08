@@ -1,6 +1,5 @@
 from website import app
 from models.club import Club
-from models.player import Player
 from flask import render_template
 
 
