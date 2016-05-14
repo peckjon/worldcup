@@ -1,7 +1,8 @@
-from website import app
-from models.country import Country
-from models.player import Player
+from website.models.player import Player
+from website.models.country import Country
+
 from flask import render_template
+from website import app
 
 
 @app.route('/team/list')

@@ -1,6 +1,6 @@
-from website import app
-from models.club import Club
 from flask import render_template
+from website import app
+from website.models.club import Club
 
 
 @app.route('/club/list')
