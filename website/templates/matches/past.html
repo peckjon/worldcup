@@ -7,14 +7,20 @@
 
 {% block content %}
     {% if pastMatches|length > 0 %}
-        {% for match in pastMatches %}
-            <div class="col-md-4 col-xs-12">
-                <div class="panel panel-default">
-                    {% include 'includes/match.html' %}
-                </div>
+        {% include 'includes/filters.html' %}
+
+        {% for row in pastMatches|batch(3) %}
+            <div class="row">
+                {% for match in row %}
+                    <div class="col-md-4 col-xs-12">
+                        <div class="panel panel-default">
+                            {% include 'includes/match.html' %}
+                        </div>
+                    </div>
+                {% endfor %}
             </div>
         {% endfor %}
-\
+
         {% include 'includes/pagination.html' %}
 
     {% endif %}

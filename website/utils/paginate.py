@@ -1,8 +1,7 @@
 def paginate(arr, page, offset):
-    if page != 1:
-        start = page * offset
-    else:
-        start = 0
+    if page < 0:
+        page = 1
+    start = (page - 1) * offset
     end = start + offset
     if len(arr) < end:
         end = len(arr) - 1

@@ -3,9 +3,15 @@ import requests
 import json
 
 
-def cache(key, url):
+def cache(args, url):
+    key = args['type'] + '_' + args['by_date']
+    req_params = {
+        'json': True,
+        'by_date': args['by_date']
+    }
+
     if redis.get(key) is None:
-        result = requests.get(url, params={'json': True}).json()
+        result = requests.get(url, params=req_params).json()
         redis.set(key, json.dumps(result))
 
         return result

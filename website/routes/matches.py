@@ -9,18 +9,22 @@ PER_PAGE = 9
 
 
 @app.route('/previous')
-def previous():
-    try:
-        page = int(request.args.get('page', 1))
-    except ValueError:
-        page = 1
+@app.route('/previous/page/<page>')
+def previous(page=1):
+    page = int(page)
+    by_date = request.args.get('by_date')
 
-    data = req.make_request('past')
+    order_by = 'asc' if by_date is None else by_date
+
+    data = req.make_request({
+        'type': 'past',
+        'by_date': order_by
+    })
 
     previous_matches = paginate(data, page, PER_PAGE)
 
     pagination = Pagination(page=page,
-                            total=len(data) - PER_PAGE,  # off by one, how does it work
+                            total=len(data),
                             per_page=PER_PAGE,
                             record_name='matches',
                             css_framework='bootstrap3')
@@ -29,18 +33,22 @@ def previous():
 
 
 @app.route('/tomorrow')
-def tomorrow():
-    try:
-        page = int(request.args.get('page', 1))
-    except ValueError:
-        page = 1
+@app.route('/tomorrow/page/<page>')
+def tomorrow(page=1):
+    page = int(page)
+    by_date = request.args.get('by_date')
 
-    data = req.make_request('future')
+    order_by = 'asc' if by_date is None else by_date
+
+    data = req.make_request({
+        'type': 'future',
+        'by_date': order_by
+    })
 
     future_matches = paginate(data, page, PER_PAGE)
 
     pagination = Pagination(page=page,
-                            total=len(data) - PER_PAGE,  # off by one, how does it work
+                            total=len(data),
                             per_page=PER_PAGE,
                             record_name='matches',
                             css_framework='bootstrap3')

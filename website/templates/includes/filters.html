@@ -1,0 +1,22 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="btn-group">
+        <button type="button" class="btn btn-default btn-sm">Order by</button>
+        <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="caret"></span>
+            <span class="sr-only">Toggle Dropdown</span>
+        </button>
+        <ul class="dropdown-menu">
+            {% if request.args.get('by_date') is not none or request.args.get('by_country') is not none %}
+                <li><a href="{{ request.path }}">Clear filter</a></li>
+                <li role="separator" class="divider"></li>
+            {% endif %}
+            <li><a href="?by_date=asc">Date Asc</a></li>
+            <li><a href="?by_date=desc">Date Desc</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="?by_country=asc">Country Asc</a></li>
+            <li><a href="?by_country=desc">Country Desc</a></li>
+        </ul>
+    </div>
+    </div>
+</div>

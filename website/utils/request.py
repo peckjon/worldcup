@@ -2,12 +2,13 @@ from caching import cache
 
 
 def make_request(arg):
+    req_type = arg['type']
     url = ''
-    if arg == 'today':
+    if req_type == 'today':
         url = 'http://worldcup.sfg.io/matches/today'
-    elif arg == 'past':
+    elif req_type == 'past':
         url = 'http://worldcup.sfg.io/matches'
-    elif arg == 'future':
+    elif req_type == 'future':
         url = 'http://worldcup.sfg.io/matches/tomorrow'
 
     return cache(arg, url)
