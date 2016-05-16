@@ -11,6 +11,8 @@
             {% for match in futureMatches %}
                 {% include 'includes/match.html' %}
             {% endfor %}
+
+            {% include 'includes/pagination.html' %}
         {% else %}
             <h1>No matches are played tomorrow</h1>
         {% endif %}

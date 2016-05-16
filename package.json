@@ -1,0 +1,13 @@
+{
+  "devDependencies": {
+        "bootstrap-sass": "^3.3.6",
+        "bootswatch": "^3.3.6",
+        "font-awesome": "^4.6.1",
+        "gulp": "^3.9.1",
+        "gulp-include": "^2.1.0",
+        "gulp-notify": "^2.2.0",
+        "gulp-ruby-sass": "^2.0.6",
+        "gulp-sass": "^2.3.1",
+        "merge-stream": "^1.0.0"
+  }
+}

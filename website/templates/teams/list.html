@@ -1,5 +1,10 @@
 {% extends 'includes/base.html' %}
 
+{% block nav %}
+    {% set active = 'info' %}
+    {% include "includes/navbar.html" %}
+{% endblock %}
+
 {% block content %}
     <div class="col-md-12 col-xs-12">
         {% if teams|length > 0 %}
