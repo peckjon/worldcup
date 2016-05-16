@@ -13,6 +13,7 @@ import website.routes.index
 import website.routes.matches
 import website.routes.clubs
 import website.routes.teams
+import website.routes.error_handlers
 
 import custom_filters
 

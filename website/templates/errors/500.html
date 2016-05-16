@@ -1,0 +1,9 @@
+{% extends 'includes/base.html' %}
+
+{% block content %}
+    <h1>Internal server error</h1>
+    <p>There's been a horrible error with the server.</p>
+    <p>
+        <a href='{{ url_for('index') }}'>Go somewhere nice</a>
+    </p>
+{% endblock %}
