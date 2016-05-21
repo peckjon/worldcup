@@ -14,7 +14,6 @@ import website.routes.matches
 import website.routes.clubs
 import website.routes.teams
 import website.routes.error_handlers
-import website.routes.webhook
 
 import website.custom_filters
 
