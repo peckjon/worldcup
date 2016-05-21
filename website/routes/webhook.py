@@ -1,7 +1,7 @@
 from website import app
 from flask import request
 from website.utils.webhook import verify_hmac_hash, mail_report
-import subprocess
+import subprocess, logging
 
 
 @app.route("/ci-trigger", methods=['POST'])
@@ -15,9 +15,11 @@ def github_payload():
                 try:
                     cmd_output = subprocess.check_output(
                         ['git', 'pull', 'origin', 'master'],)
-                    return mail_report(str(cmd_output))
+                    # return mail_report(str(cmd_output))
+                    logging.info('Pull OK')
                 except subprocess.CalledProcessError as error:
-                    return mail_report(str(error.output))
+                    # return mail_report(str(error.output))
+                    logging.error(str(error.output))
             else:
                 return -1
 
