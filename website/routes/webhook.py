@@ -1,5 +1,5 @@
 from website import app
-from flask import request, jsonify
+from flask import request
 from website.utils.webhook import verify_hmac_hash, mail_report
 import subprocess
 
