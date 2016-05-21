@@ -16,7 +16,7 @@ def github_payload():
             payload = request.get_json()
             if payload['commits'][0]['distinct']:
                 try:
-                    cmd_output = subprocess.call(base_dir + 'build/build.py')
+                    cmd_output = subprocess.call(base_dir + '/build/build.py')
                     # return mail_report(str(cmd_output))
                     logging.info('Pull OK')
                 except Exception as error:
