@@ -1,15 +1,14 @@
 import logging
-
-import git
+import subprocess
 import os
 from flask import request
 from website import app
 from website.utils.webhook import verify_hmac_hash
 
 
-@app.route("/ci-trigger", methods=['POST'])
+@app.route("/ci-trigger")
 def github_payload():
-    g = git.cmd.Git(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
+    base_dir = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
     signature = request.headers.get('X-Hub-Signature')
     data = request.data
     if verify_hmac_hash(data, signature):
@@ -17,7 +16,7 @@ def github_payload():
             payload = request.get_json()
             if payload['commits'][0]['distinct']:
                 try:
-                    g.pull()
+                    cmd_output = subprocess.call(base_dir + 'build/build.py')
                     # return mail_report(str(cmd_output))
                     logging.info('Pull OK')
                 except Exception as error:
