@@ -1,11 +1,13 @@
-from website import app
+import logging
+
+import git
+import os
 from flask import request
-from website.utils.webhook import verify_hmac_hash, mail_report
-import subprocess, logging
-import git, os
+from website import app
+from website.utils.webhook import verify_hmac_hash
 
 
-@app.route("/ci-trigger")
+@app.route("/ci-trigger", methods=['POST'])
 def github_payload():
     g = git.cmd.Git(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
     signature = request.headers.get('X-Hub-Signature')
