@@ -1,4 +1,4 @@
-from caching import cache
+from .caching import cache
 
 
 def make_request(arg):

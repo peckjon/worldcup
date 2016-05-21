@@ -1,4 +1,4 @@
-import request as req
+from .request import make_request
 from flask_paginate import Pagination
 
 PER_PAGE = 9
@@ -17,7 +17,7 @@ def paginate(arr, page, offset):
 def paginate_data(req_type, order_by, page):
     order_by = 'asc' if order_by is None else order_by
 
-    data = req.make_request({
+    data = make_request({
         'type': req_type,
         'by_date': order_by
     })

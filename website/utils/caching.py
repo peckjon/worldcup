@@ -16,4 +16,4 @@ def cache(args, url):
 
         return result
     else:
-        return json.loads(redis.get(key))
+        return json.loads(redis.get(key).decode())  # Decode byte sequence into a string then parse it into json

@@ -1,9 +1,7 @@
 from flask import render_template
 from website import app
-from website.utils import request as req
 from website.utils.paginate import paginate_data
 from flask import request
-from flask.ext.paginate import Pagination
 
 PER_PAGE = 9
 
