@@ -1,6 +1,12 @@
 import os
+
+
+def execfile(filename):
+    globals = dict(__file__=filename)
+    exec(open(filename).read(), globals)
+
 activate_this = os.path.dirname(__file__) + '/venv/bin/activate_this.py'
-execfile(activate_this, dict(__file__=activate_this))
+execfile(activate_this)
 
 import sys
 import logging
