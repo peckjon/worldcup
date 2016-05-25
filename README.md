@@ -5,4 +5,4 @@ Simple app I made for myself to check the world cup matches. I used the API from
 
 Don't look directly at the bugs!
 
-Demo [here](http://worldcup.alexraileanu.me/).
+Demo [here](https://worldcup.alexraileanu.me/).
