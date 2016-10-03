@@ -8,14 +8,14 @@
         </button>
         <ul class="dropdown-menu">
             {% if request.args.get('by_date') is not none or request.args.get('by_country') is not none %}
-                <li><a href="{{ request.path }}">Clear filter</a></li>
+                <li><a href="{{ request.path }}">Clear sorting</a></li>
                 <li role="separator" class="divider"></li>
             {% endif %}
-            <li><a href="?by_date=asc">Date Asc</a></li>
-            <li><a href="?by_date=desc">Date Desc</a></li>
+            <li><a href="?by_date=asc">Date Ascending</a></li>
+            <li><a href="?by_date=desc">Date Desceding</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="?by_country=asc">Country Asc</a></li>
-            <li><a href="?by_country=desc">Country Desc</a></li>
+            <li><a href="?by_country=asc">Country [A-Z]</a></li>
+            <li><a href="?by_country=desc">Country [Z-A]</a></li>
         </ul>
     </div>
     </div>
