@@ -18,7 +18,7 @@ def github_payload():
             payload = request.get_json()
             if payload['commits'][0]['distinct']:
                 try:
-                    cmd_output = subprocess.call(['python3', base_dir + '/build/build.py'])
+                    cmd_output = subprocess.call(['.' + base_dir + '/build/build.py'], shell=True)
                     # return mail_report(str(cmd_output))
                     logging.info('Pull OK')
                     return jsonify({'msg': str(cmd_output)})
