@@ -10,3 +10,4 @@ arrow==0.7.0
 flask-paginate==0.4.1
 redis==2.10.5
 requests==2.10.0
+uWSGI==2.0.15
