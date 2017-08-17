@@ -7,3 +7,4 @@ lib/
 venv/
 /config
 *.pyc
+.vscode
