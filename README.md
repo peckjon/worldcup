@@ -1,14 +1,25 @@
 worldcup
 ========
 
-Simple app I made for myself to check the world cup matches. I used the API from [worldcup.sfg.io](http://worldcup.sfg.io).
+This [simple app](https://worldcup.alexraileanu.me/) is used to check world cup matches. You are able to view past and upcoming matches along with lists of teams and clubs.
 
-Click "Matches" to see previous/upcoming matches or Info to see a list of clubs/teams.
+API
+========
+
+The app used API from [worldcup.sfg.io](http://worldcup.sfg.io).
+
+Tour
+========
+
+* *"Eurocup"* and "Home" brings you to the Home Page
+
+* *"Matches"* will have previous or upcoming matches with the date, location, and results.
+
+* *"Info"* to see a list of clubs/teams.
+
+License
+========
+
+[Here!](https://github.com/alexraileanu/worldcup/blob/master/LICENSE.md)
 
 Don't look directly at the bugs!
-
-Demo [here](https://worldcup.alexraileanu.me/).
-
-##License
-
-For LICENSE.md [click here](https://github.com/alexraileanu/worldcup/blob/master/LICENSE.md)
