@@ -8,3 +8,5 @@ venv/
 /config
 *.pyc
 .vscode
+/package-lock.json
+package-lock.json

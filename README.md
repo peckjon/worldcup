@@ -3,6 +3,16 @@ worldcup
 
 This [simple app](https://worldcup.alexraileanu.me/) is used to check world cup matches. You are able to view past and upcoming matches along with lists of teams and clubs.
 
+Installation
+========
+npm install
+pip install -r requirements.txt
+
+Running
+========
+gulp
+python wsgi.py
+
 API
 ========
 
